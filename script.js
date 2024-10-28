@@ -18,6 +18,14 @@ form.addEventListener("submit", (event) => {
 
         showEmailError();
         event.preventDefault();
+    } else if (!password.validity.valid) {
+
+        showPasswordError();
+        event.preventDefault();
+    } else if (confirmPasswords(false)) {
+        
+        showConfirmPasswordError();
+        event.preventDefault();
     }
 })
 
@@ -74,3 +82,44 @@ window.onload = () => {
     document.getElementById("country").onchange = checkZipCode;
     document.getElementById("zip-code").oninput = checkZipCode;
 };
+
+const password = document.getElementById("password");
+const passwordError = document.querySelector("#password + span.error");
+
+password.addEventListener("input", (event) => {
+
+    if (password.validity.valid) {
+        passwordError.textContent = "";
+        passwordError.className = "error";
+    } else {
+        showPasswordError();
+    }
+});
+
+function showPasswordError() {
+    if (password.validity.valueMissing) {
+        passwordError.textContent = "You need to enter an email address.";
+    } else if (password.validity.tooShort) {
+        passwordError.textContent = `Password should be at least ${password.minLength} characters;
+         you entered ${password.value.length}.`;
+    }
+
+    passwordError.className = "error active";
+}
+
+const confirmPassword = document.getElementById("confirm-password");
+const confirmPasswordError = document.querySelector("#confirm-password + span.error");
+
+function confirmPasswords() {
+    if (password === confirmPassword) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function showConfirmPasswordError() {
+    if (confirmPasswords === false) {
+        confirmPasswordError.textContent = "Please double-check your passwords, they need to match.";
+    }
+}

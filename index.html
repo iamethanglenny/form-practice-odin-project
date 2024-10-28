@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form novalidate>
+        <p>
+            <label for="email">
+                <span>Email: </span>
+                <input type="email" id="email">
+                <span class="error" aria-live="polite"></span>
+            </label>
+            <label for="country">Country: </label>
+            <select id="country">
+                <option value="sa">South Africa</option>
+                <option value="na">Namibia</option>
+                <option value="bo">Botswana</option>
+                <option value="le">Lesotho</option>
+            </select>
+            <label for="zip-code">Zip Code: </label>
+            <input type="text" id="zip-code">
+            <label for="password">Password: </label>
+            <input type="text" id="password">
+            <label for="confirm-password">Confirm Password: </label>
+            <input type="text" id="confirm-password">
+        </p>
+        <input type="submit" value="Validate">
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
